@@ -1,7 +1,7 @@
 # Визуальный редактор векторных объектов
 Тип приложения: GUI; язык: C#.\
 Инструменты: Visual Studio; .NET 6.0; WPF; Паттерны ООП.\
-Индекс удобства поддержки: OOP_dll_figure – 83; OOP_gui_figure – 77.\
+Индекс удобства поддержки: OOP_dll_figure – 83; OOP_gui_figure – 77.
 
 ## Инструкция
 ![oop_1](https://user-images.githubusercontent.com/62021182/229914198-f34fee92-b455-4bb9-8a68-b97934869198.png)

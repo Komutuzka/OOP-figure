@@ -6,16 +6,18 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace OOP_gui_figure
 {
-    public partial class MainForm : Form
+    public partial class MainForm : Form //, IMyObserver
     {
-        Storage<Figure> storage = new Storage<Figure>();
+        StorageDecorator<Figure> storage = new StorageDecorator<Figure>();
         HistoryCommand historyCommand = new HistoryCommand();
-        TreeNode MainNode = new TreeNode("Storage");
+        //TreeNode MainNode = new TreeNode("Storage");
+        
         public MainForm()
         {
             InitializeComponent();
+            treeVw.Nodes.Add("Figures");
         }
-        
+
         // рисование фигуры
         private void pctBx_Click(object sender, EventArgs e)
         {
@@ -29,7 +31,8 @@ namespace OOP_gui_figure
             }
             storage.NullElem();
             lblCount.Text = "Количество элементов: " + storage.GetCount.ToString();
-            updateTree();
+
+            //updateTree();
         }
         private void pctBx_MouseClick(object sender, MouseEventArgs e)
         {
@@ -65,14 +68,17 @@ namespace OOP_gui_figure
                 if (strFigure != "")
                 {
                     Factory factory = new Proxy(pctBx.Width, pctBx.Height);
-                    storage.AddElem(factory.CreateFigure(strFigure, e.X, e.Y));
-                    //MainNode.Nodes.Add(strFigure);
-                    treeVw.Nodes.Add(strFigure);
+                    Figure figure = factory.CreateFigure(strFigure, e.X, e.Y);
+                    if (figure != null)
+                    {
+                        //figure.AddObserver(this);
+                        storage.AddElem(figure);
+                    }
                 }
             }
             pctBx.Refresh();
         }
-        
+
         // удаление фигуры
         private void btnDelete_Click(object sender, EventArgs e)
         {
@@ -84,7 +90,7 @@ namespace OOP_gui_figure
                     --i;
                 }
                 else storage.NextElem();
-                
+
             }
             storage.NullElem();
             pctBx.Refresh();
@@ -97,7 +103,7 @@ namespace OOP_gui_figure
             lblCount.Text = "Количество элементов: " + storage.GetCount.ToString();
             pctBx.Refresh();
         }
-        
+
         // группировка и разгруппировка фигур
         private void btnGroup_Click(object sender, EventArgs e)
         {
@@ -125,24 +131,25 @@ namespace OOP_gui_figure
             }
             else
             {
-                //Composite composite = new Composite();
-                //composite.AddElem(storage);
-                //storage.AddElem(composite);
-
                 Composite composite = new Composite();
                 for (int i = 0; i < storage.GetCount; ++i, storage.NextElem())
                 {
                     if (storage.GetElem.Cursor)
-                    {
+                    {                        
                         composite.AddElem(storage.GetElem);
+                        storage.DeleteElem();
+                        storage.BackElem();
+                        i--;
                     }
                 }
+                //composite.AddObserver(this);
                 storage.NullElem();
                 storage.AddElem(composite);
+                
             }
             pctBx.Refresh();
         }
-        
+
         // цвет фигуры
         private void btnColor_Click(object sender, EventArgs e)
         {
@@ -197,7 +204,7 @@ namespace OOP_gui_figure
             storage.NullElem();
             pctBx.Refresh();
         }
-        
+
         // смещение фигуры
         private void btnUp_Click(object sender, EventArgs e)
         {
@@ -289,7 +296,7 @@ namespace OOP_gui_figure
         {
             switch (e.KeyCode)
             {
-                case Keys.Add: { btnIncrease_Click(sender,e); break; }
+                case Keys.Add: { btnIncrease_Click(sender, e); break; }
                 case Keys.Subtract: { btnDecrease_Click(sender, e); break; }
                 case Keys.Delete: { btnClear_Click(sender, e); break; }
                 case Keys.Back: { btnDelete_Click(sender, e); break; }
@@ -329,6 +336,7 @@ namespace OOP_gui_figure
 
             HistoryFigure historyFigure = new HistoryFigure();
             File.WriteAllLines(sfd.FileName, historyFigure.AddToHistory(storage));
+
         }
 
         private void btnLoad_Click(object sender, EventArgs e)
@@ -365,23 +373,59 @@ namespace OOP_gui_figure
             pctBx.Refresh();
         }
 
-        private void updateTree()
+        private void btnTxt_Click(object sender, EventArgs e)
         {
-            treeVw.Nodes.Clear();
-            for (int i = 0; i < storage.GetCount; ++i, storage.NextElem()) 
+            HistoryFigure historyFigure = new HistoryFigure();
+            string[] strHist = historyFigure.AddToHistory(storage);
+            string strNew = "";
+            for (int i = 0;i < strHist.Length; ++i)
             {
-                if (storage.GetElem.IsComposite())
-                {
-                    TreeNode treeComposite = new TreeNode("Group");
-                    Composite composite = (Composite)storage.GetElem;
-                    //treeComposite
-                }
-                else
-                {
-                    treeVw.Nodes.Add(storage.GetElem.getNameFigure);
-                }
+                strNew += strHist[i] + "\n";
             }
-            storage.NullElem();
+            MessageBox.Show(strNew);
         }
+
+        // работа с наблюдателем
+        //private void updateTree()
+        //{
+        //    treeVw.Nodes[0].Nodes.Clear();
+        //    treeVw.Nodes[0].Expand();
+
+
+        //    //for (int i = 0; i < storage.GetCount; ++i, storage.NextElem())
+        //    //{
+        //    //    if (storage.GetElem.IsComposite())
+        //    //    {
+        //    //        treeVw.Nodes[0].Nodes.Add(storage.GetElem.getNameFigure());
+        //    //    }
+        //    //}
+        //    //storage.NullElem();
+
+
+        //    for (int i = 0; i < storage.GetCount; ++i, storage.NextElem())
+        //    {
+        //        treeVw.Nodes[0].Nodes.Add(storage.GetElem.getNameFigure());
+        //    }
+        //    storage.NullElem();
+        //}
+
+        // работа с наблюдателем
+        //public void UpdateCreate(IMyObservable a)
+        //{
+
+        //    TreeNode node = new TreeNode(a.GetType().Name);
+        //    node.Name = a.GetType().Name;
+        //    //MessageBox.Show(a.GetType().Name);
+        //    int i = 0;
+        //    if (a.GetType().Name is "Composite") i++;
+        //    treeVw.Nodes[i].Nodes.Add(node);
+        //}
+
+        //public void UpdateDelete(IMyObservable a)
+        //{
+        //    TreeNode[] nodes = treeVw.Nodes.Find(a.GetType().Name, true);
+        //    if (nodes.Length > 0)
+        //        treeVw.Nodes.Remove(nodes[0]);
+        //}
     }
 }

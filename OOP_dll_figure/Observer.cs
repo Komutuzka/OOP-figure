@@ -6,23 +6,17 @@ using System.Threading.Tasks;
 
 namespace OOP_dll_figure
 {
-    public class Observer
+    public interface IMyObservable
     {
-        Figure[] observers;
-        
-        public Observer()
-        {
-            observers = null;
-        }
-        public void subscribe(Figure observer)
-        {
-
-        }
-        public void unsubscribe(Figure observer)
-        {
-
-        }
+        void AddObserver(IMyObserver o);
+        void RemoveObserver(IMyObserver o);
+        void NotifyCreate();
+        void NotifyDelete();
     }
-
+    public interface IMyObserver
+    {
+        void UpdateCreate(IMyObservable a);
+        void UpdateDelete(IMyObservable a);
+    }
 
 }

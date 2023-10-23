@@ -8,6 +8,10 @@ using System.Windows.Forms;
 
 namespace OOP_dll_figure
 {
+    public abstract class Factory
+    {
+        public abstract Figure CreateFigure(String type, int x, int y);
+    }
     public class FactoryMethod : Factory
     {
         public override Figure CreateFigure(String type, int x, int y)

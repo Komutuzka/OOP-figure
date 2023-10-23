@@ -8,11 +8,6 @@ using System.Windows.Forms;
 
 namespace OOP_dll_figure
 {
-    public abstract class Factory
-    {
-        public abstract Figure CreateFigure(String type, int x, int y);
-
-    }
     public class Proxy : Factory
     {
         int width, height, r = 30;

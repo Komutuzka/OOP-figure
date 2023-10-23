@@ -29,274 +29,282 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.pctBx = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblCount = new System.Windows.Forms.Label();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
-            this.btnDecrease = new System.Windows.Forms.Button();
-            this.btnIncrease = new System.Windows.Forms.Button();
-            this.btnRight = new System.Windows.Forms.Button();
-            this.btnLeft = new System.Windows.Forms.Button();
-            this.btnDown = new System.Windows.Forms.Button();
-            this.cmBx = new System.Windows.Forms.ComboBox();
-            this.btnColor = new System.Windows.Forms.Button();
-            this.btnUp = new System.Windows.Forms.Button();
-            this.btnGroup = new System.Windows.Forms.Button();
-            this.colorDialog = new System.Windows.Forms.ColorDialog();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.treeVw = new System.Windows.Forms.TreeView();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBx)).BeginInit();
-            this.SuspendLayout();
+            pctBx = new PictureBox();
+            label1 = new Label();
+            lblCount = new Label();
+            btnDelete = new Button();
+            btnClear = new Button();
+            btnDecrease = new Button();
+            btnIncrease = new Button();
+            btnRight = new Button();
+            btnLeft = new Button();
+            btnDown = new Button();
+            cmBx = new ComboBox();
+            btnColor = new Button();
+            btnUp = new Button();
+            btnGroup = new Button();
+            colorDialog = new ColorDialog();
+            btnCancel = new Button();
+            btnSave = new Button();
+            btnLoad = new Button();
+            openFileDialog = new OpenFileDialog();
+            saveFileDialog = new SaveFileDialog();
+            treeVw = new TreeView();
+            btnTxt = new Button();
+            ((System.ComponentModel.ISupportInitialize)pctBx).BeginInit();
+            SuspendLayout();
             // 
             // pctBx
             // 
-            this.pctBx.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.pctBx.Location = new System.Drawing.Point(6, 38);
-            this.pctBx.Name = "pctBx";
-            this.pctBx.Size = new System.Drawing.Size(592, 403);
-            this.pctBx.TabIndex = 0;
-            this.pctBx.TabStop = false;
-            this.pctBx.Click += new System.EventHandler(this.pctBx_Click);
-            this.pctBx.Paint += new System.Windows.Forms.PaintEventHandler(this.pctBx_Paint);
-            this.pctBx.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pctBx_MouseClick);
+            pctBx.BackColor = SystemColors.ControlLightLight;
+            pctBx.Location = new Point(6, 38);
+            pctBx.Name = "pctBx";
+            pctBx.Size = new Size(592, 403);
+            pctBx.TabIndex = 0;
+            pctBx.TabStop = false;
+            pctBx.Click += pctBx_Click;
+            pctBx.Paint += pctBx_Paint;
+            pctBx.MouseClick += pctBx_MouseClick;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(118, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(107, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Выберите фигуру:";
+            label1.AutoSize = true;
+            label1.Location = new Point(118, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(107, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Выберите фигуру:";
             // 
             // lblCount
             // 
-            this.lblCount.AutoSize = true;
-            this.lblCount.Location = new System.Drawing.Point(452, 9);
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(121, 15);
-            this.lblCount.TabIndex = 2;
-            this.lblCount.Text = "Количество фигур: 0";
+            lblCount.AutoSize = true;
+            lblCount.Location = new Point(452, 9);
+            lblCount.Name = "lblCount";
+            lblCount.Size = new Size(121, 15);
+            lblCount.TabIndex = 2;
+            lblCount.Text = "Количество фигур: 0";
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(371, 6);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 23);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "Удалить";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            btnDelete.Location = new Point(371, 6);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 6;
+            btnDelete.Text = "Удалить";
+            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.Click += btnDelete_Click;
             // 
             // btnClear
             // 
-            this.btnClear.Location = new System.Drawing.Point(604, 6);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
-            this.btnClear.TabIndex = 7;
-            this.btnClear.Text = "Очистить";
-            this.btnClear.UseVisualStyleBackColor = true;
-            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            btnClear.Location = new Point(604, 6);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 7;
+            btnClear.Text = "Очистить";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // btnDecrease
             // 
-            this.btnDecrease.BackgroundImage = global::OOP_gui_figure.Properties.Resources.minus;
-            this.btnDecrease.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDecrease.FlatAppearance.BorderSize = 0;
-            this.btnDecrease.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDecrease.Location = new System.Drawing.Point(604, 106);
-            this.btnDecrease.Name = "btnDecrease";
-            this.btnDecrease.Size = new System.Drawing.Size(25, 25);
-            this.btnDecrease.TabIndex = 8;
-            this.btnDecrease.UseVisualStyleBackColor = true;
-            this.btnDecrease.Click += new System.EventHandler(this.btnDecrease_Click);
+            btnDecrease.BackgroundImage = Properties.Resources.minus;
+            btnDecrease.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDecrease.FlatAppearance.BorderSize = 0;
+            btnDecrease.FlatStyle = FlatStyle.Flat;
+            btnDecrease.Location = new Point(604, 106);
+            btnDecrease.Name = "btnDecrease";
+            btnDecrease.Size = new Size(25, 25);
+            btnDecrease.TabIndex = 8;
+            btnDecrease.UseVisualStyleBackColor = true;
+            btnDecrease.Click += btnDecrease_Click;
             // 
             // btnIncrease
             // 
-            this.btnIncrease.BackgroundImage = global::OOP_gui_figure.Properties.Resources.plus;
-            this.btnIncrease.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnIncrease.FlatAppearance.BorderSize = 0;
-            this.btnIncrease.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIncrease.Location = new System.Drawing.Point(654, 106);
-            this.btnIncrease.Name = "btnIncrease";
-            this.btnIncrease.Size = new System.Drawing.Size(25, 25);
-            this.btnIncrease.TabIndex = 9;
-            this.btnIncrease.UseVisualStyleBackColor = true;
-            this.btnIncrease.Click += new System.EventHandler(this.btnIncrease_Click);
+            btnIncrease.BackgroundImage = Properties.Resources.plus;
+            btnIncrease.BackgroundImageLayout = ImageLayout.Stretch;
+            btnIncrease.FlatAppearance.BorderSize = 0;
+            btnIncrease.FlatStyle = FlatStyle.Flat;
+            btnIncrease.Location = new Point(654, 106);
+            btnIncrease.Name = "btnIncrease";
+            btnIncrease.Size = new Size(25, 25);
+            btnIncrease.TabIndex = 9;
+            btnIncrease.UseVisualStyleBackColor = true;
+            btnIncrease.Click += btnIncrease_Click;
             // 
             // btnRight
             // 
-            this.btnRight.BackgroundImage = global::OOP_gui_figure.Properties.Resources.arrow_right;
-            this.btnRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnRight.FlatAppearance.BorderSize = 0;
-            this.btnRight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRight.Location = new System.Drawing.Point(654, 166);
-            this.btnRight.Name = "btnRight";
-            this.btnRight.Size = new System.Drawing.Size(25, 25);
-            this.btnRight.TabIndex = 11;
-            this.btnRight.UseVisualStyleBackColor = true;
-            this.btnRight.Click += new System.EventHandler(this.btnRight_Click);
+            btnRight.BackgroundImage = Properties.Resources.arrow_right;
+            btnRight.BackgroundImageLayout = ImageLayout.Stretch;
+            btnRight.FlatAppearance.BorderSize = 0;
+            btnRight.FlatStyle = FlatStyle.Flat;
+            btnRight.Location = new Point(654, 166);
+            btnRight.Name = "btnRight";
+            btnRight.Size = new Size(25, 25);
+            btnRight.TabIndex = 11;
+            btnRight.UseVisualStyleBackColor = true;
+            btnRight.Click += btnRight_Click;
             // 
             // btnLeft
             // 
-            this.btnLeft.BackgroundImage = global::OOP_gui_figure.Properties.Resources.arrow_left;
-            this.btnLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLeft.FlatAppearance.BorderSize = 0;
-            this.btnLeft.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLeft.Location = new System.Drawing.Point(604, 166);
-            this.btnLeft.Name = "btnLeft";
-            this.btnLeft.Size = new System.Drawing.Size(25, 25);
-            this.btnLeft.TabIndex = 12;
-            this.btnLeft.UseVisualStyleBackColor = true;
-            this.btnLeft.Click += new System.EventHandler(this.btnLeft_Click);
+            btnLeft.BackgroundImage = Properties.Resources.arrow_left;
+            btnLeft.BackgroundImageLayout = ImageLayout.Stretch;
+            btnLeft.FlatAppearance.BorderSize = 0;
+            btnLeft.FlatStyle = FlatStyle.Flat;
+            btnLeft.Location = new Point(604, 166);
+            btnLeft.Name = "btnLeft";
+            btnLeft.Size = new Size(25, 25);
+            btnLeft.TabIndex = 12;
+            btnLeft.UseVisualStyleBackColor = true;
+            btnLeft.Click += btnLeft_Click;
             // 
             // btnDown
             // 
-            this.btnDown.BackgroundImage = global::OOP_gui_figure.Properties.Resources.arrow_down;
-            this.btnDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDown.FlatAppearance.BorderSize = 0;
-            this.btnDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDown.Location = new System.Drawing.Point(629, 191);
-            this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(25, 25);
-            this.btnDown.TabIndex = 13;
-            this.btnDown.UseVisualStyleBackColor = true;
-            this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+            btnDown.BackgroundImage = Properties.Resources.arrow_down;
+            btnDown.BackgroundImageLayout = ImageLayout.Stretch;
+            btnDown.FlatAppearance.BorderSize = 0;
+            btnDown.FlatStyle = FlatStyle.Flat;
+            btnDown.Location = new Point(629, 191);
+            btnDown.Name = "btnDown";
+            btnDown.Size = new Size(25, 25);
+            btnDown.TabIndex = 13;
+            btnDown.UseVisualStyleBackColor = true;
+            btnDown.Click += btnDown_Click;
             // 
             // cmBx
             // 
-            this.cmBx.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmBx.FormattingEnabled = true;
-            this.cmBx.Items.AddRange(new object[] {
-            "Круг",
-            "Квадрат",
-            "Треугольник"});
-            this.cmBx.Location = new System.Drawing.Point(231, 6);
-            this.cmBx.Name = "cmBx";
-            this.cmBx.Size = new System.Drawing.Size(121, 23);
-            this.cmBx.TabIndex = 14;
+            cmBx.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmBx.FormattingEnabled = true;
+            cmBx.Items.AddRange(new object[] { "Круг", "Квадрат", "Треугольник" });
+            cmBx.Location = new Point(231, 6);
+            cmBx.Name = "cmBx";
+            cmBx.Size = new Size(121, 23);
+            cmBx.TabIndex = 14;
             // 
             // btnColor
             // 
-            this.btnColor.Location = new System.Drawing.Point(604, 67);
-            this.btnColor.Name = "btnColor";
-            this.btnColor.Size = new System.Drawing.Size(75, 23);
-            this.btnColor.TabIndex = 15;
-            this.btnColor.Text = "Цвет";
-            this.btnColor.UseVisualStyleBackColor = true;
-            this.btnColor.Click += new System.EventHandler(this.btnColor_Click);
+            btnColor.Location = new Point(604, 67);
+            btnColor.Name = "btnColor";
+            btnColor.Size = new Size(75, 23);
+            btnColor.TabIndex = 15;
+            btnColor.Text = "Цвет";
+            btnColor.UseVisualStyleBackColor = true;
+            btnColor.Click += btnColor_Click;
             // 
             // btnUp
             // 
-            this.btnUp.BackgroundImage = global::OOP_gui_figure.Properties.Resources.arrow_up;
-            this.btnUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUp.FlatAppearance.BorderColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.btnUp.FlatAppearance.BorderSize = 0;
-            this.btnUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUp.Location = new System.Drawing.Point(629, 139);
-            this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(25, 25);
-            this.btnUp.TabIndex = 16;
-            this.btnUp.UseVisualStyleBackColor = true;
-            this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+            btnUp.BackgroundImage = Properties.Resources.arrow_up;
+            btnUp.BackgroundImageLayout = ImageLayout.Stretch;
+            btnUp.FlatAppearance.BorderColor = SystemColors.GradientInactiveCaption;
+            btnUp.FlatAppearance.BorderSize = 0;
+            btnUp.FlatStyle = FlatStyle.Flat;
+            btnUp.Location = new Point(629, 139);
+            btnUp.Name = "btnUp";
+            btnUp.Size = new Size(25, 25);
+            btnUp.TabIndex = 16;
+            btnUp.UseVisualStyleBackColor = true;
+            btnUp.Click += btnUp_Click;
             // 
             // btnGroup
             // 
-            this.btnGroup.Location = new System.Drawing.Point(604, 38);
-            this.btnGroup.Name = "btnGroup";
-            this.btnGroup.Size = new System.Drawing.Size(75, 23);
-            this.btnGroup.TabIndex = 17;
-            this.btnGroup.Text = "Группа";
-            this.btnGroup.UseVisualStyleBackColor = true;
-            this.btnGroup.Click += new System.EventHandler(this.btnGroup_Click);
+            btnGroup.Location = new Point(604, 38);
+            btnGroup.Name = "btnGroup";
+            btnGroup.Size = new Size(75, 23);
+            btnGroup.TabIndex = 17;
+            btnGroup.Text = "Группа";
+            btnGroup.UseVisualStyleBackColor = true;
+            btnGroup.Click += btnGroup_Click;
             // 
             // btnCancel
             // 
-            this.btnCancel.BackgroundImage = global::OOP_gui_figure.Properties.Resources.cancel;
-            this.btnCancel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(68, 4);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(25, 25);
-            this.btnCancel.TabIndex = 18;
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            btnCancel.BackgroundImage = Properties.Resources.cancel;
+            btnCancel.BackgroundImageLayout = ImageLayout.Stretch;
+            btnCancel.FlatStyle = FlatStyle.Flat;
+            btnCancel.Location = new Point(68, 4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(25, 25);
+            btnCancel.TabIndex = 18;
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // btnSave
             // 
-            this.btnSave.BackgroundImage = global::OOP_gui_figure.Properties.Resources.save;
-            this.btnSave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSave.FlatAppearance.BorderSize = 0;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Location = new System.Drawing.Point(37, 4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(25, 25);
-            this.btnSave.TabIndex = 21;
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.BackgroundImage = Properties.Resources.save;
+            btnSave.BackgroundImageLayout = ImageLayout.Stretch;
+            btnSave.FlatAppearance.BorderSize = 0;
+            btnSave.FlatStyle = FlatStyle.Flat;
+            btnSave.Location = new Point(37, 4);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(25, 25);
+            btnSave.TabIndex = 21;
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // btnLoad
             // 
-            this.btnLoad.BackgroundImage = global::OOP_gui_figure.Properties.Resources.load;
-            this.btnLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnLoad.FlatAppearance.BorderSize = 0;
-            this.btnLoad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLoad.Location = new System.Drawing.Point(6, 4);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(25, 25);
-            this.btnLoad.TabIndex = 22;
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            btnLoad.BackgroundImage = Properties.Resources.load;
+            btnLoad.BackgroundImageLayout = ImageLayout.Stretch;
+            btnLoad.FlatAppearance.BorderSize = 0;
+            btnLoad.FlatStyle = FlatStyle.Flat;
+            btnLoad.Location = new Point(6, 4);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(25, 25);
+            btnLoad.TabIndex = 22;
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
             // 
             // openFileDialog
             // 
-            this.openFileDialog.FileName = "openFileDialog";
+            openFileDialog.FileName = "openFileDialog";
             // 
             // treeVw
             // 
-            this.treeVw.Location = new System.Drawing.Point(685, 6);
-            this.treeVw.Name = "treeVw";
-            this.treeVw.Size = new System.Drawing.Size(169, 435);
-            this.treeVw.TabIndex = 23;
+            treeVw.Location = new Point(685, 6);
+            treeVw.Name = "treeVw";
+            treeVw.Size = new Size(169, 435);
+            treeVw.TabIndex = 23;
+            // 
+            // btnTxt
+            // 
+            btnTxt.Location = new Point(604, 222);
+            btnTxt.Name = "btnTxt";
+            btnTxt.Size = new Size(75, 23);
+            btnTxt.TabIndex = 24;
+            btnTxt.Text = "Запись";
+            btnTxt.UseVisualStyleBackColor = true;
+            btnTxt.Click += btnTxt_Click;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.ClientSize = new System.Drawing.Size(862, 450);
-            this.Controls.Add(this.treeVw);
-            this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnGroup);
-            this.Controls.Add(this.btnUp);
-            this.Controls.Add(this.btnColor);
-            this.Controls.Add(this.cmBx);
-            this.Controls.Add(this.btnDown);
-            this.Controls.Add(this.btnLeft);
-            this.Controls.Add(this.btnRight);
-            this.Controls.Add(this.btnIncrease);
-            this.Controls.Add(this.btnDecrease);
-            this.Controls.Add(this.btnClear);
-            this.Controls.Add(this.btnDelete);
-            this.Controls.Add(this.lblCount);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.pctBx);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.KeyPreview = true;
-            this.Name = "MainForm";
-            this.Text = "Фигуры";
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            ((System.ComponentModel.ISupportInitialize)(this.pctBx)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
+            ClientSize = new Size(862, 450);
+            Controls.Add(btnTxt);
+            Controls.Add(treeVw);
+            Controls.Add(btnLoad);
+            Controls.Add(btnSave);
+            Controls.Add(btnCancel);
+            Controls.Add(btnGroup);
+            Controls.Add(btnUp);
+            Controls.Add(btnColor);
+            Controls.Add(cmBx);
+            Controls.Add(btnDown);
+            Controls.Add(btnLeft);
+            Controls.Add(btnRight);
+            Controls.Add(btnIncrease);
+            Controls.Add(btnDecrease);
+            Controls.Add(btnClear);
+            Controls.Add(btnDelete);
+            Controls.Add(lblCount);
+            Controls.Add(label1);
+            Controls.Add(pctBx);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            KeyPreview = true;
+            Name = "MainForm";
+            Text = "Фигуры";
+            KeyDown += MainForm_KeyDown;
+            ((System.ComponentModel.ISupportInitialize)pctBx).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -322,5 +330,6 @@
         private OpenFileDialog openFileDialog;
         private SaveFileDialog saveFileDialog;
         private TreeView treeVw;
+        private Button btnTxt;
     }
 }

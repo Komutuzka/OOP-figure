@@ -35,7 +35,7 @@ namespace OOP_dll_figure
             return figure;
         }
 
-        public virtual bool IsComposite() { return false; }
+        public virtual bool IsComposite { get { return false; } }
 
         public void setState(string nameFigure, int x, int y, int r, Color color)
         {
@@ -83,6 +83,7 @@ namespace OOP_dll_figure
 
     public class MementoComposite : Memento
     {
+
         public Storage<Memento> history;
         public int GetCount { get { return history.GetCount; } }
 
@@ -90,10 +91,10 @@ namespace OOP_dll_figure
         {
             history = new Storage<Memento>();
         }
-        public override bool IsComposite() { return true; }
+        public override bool IsComposite { get { return true; } }
 
         public Memento GetElem { get { return history.GetElem; } }
-        public void NextElem() {  history.NextElem(); }
+        public void NextElem() { history.NextElem(); }
         public void NullElem() { history.NullElem(); }
 
         public void AddFigure(Memento memento)
@@ -103,7 +104,7 @@ namespace OOP_dll_figure
         public override string InfoFigure()
         {
             string Info = "{ ";
-            for (int i = 0; i < GetCount; ++i, NextElem()) 
+            for (int i = 0; i < GetCount; ++i, NextElem())
             {
                 Info += GetElem.InfoFigure();
             }
@@ -113,7 +114,7 @@ namespace OOP_dll_figure
         }
         public override void RepackInfoFigure(string[] s)
         {
-            for (int i = 1; i < (s.Length-1); ++i)
+            for (int i = 1; i < (s.Length - 1); ++i)
             {
                 Memento memento;
                 if (s[i] == "{")
@@ -122,11 +123,11 @@ namespace OOP_dll_figure
                     int ic = i;
                     while (s[i] != "}")
                     {
-                        c += 1; i += 1;                        
+                        c += 1; i += 1;
                     }
                     i = ic;
                     string[] composite = new string[c];
-                    for(int f = 0; f < c; ++f)
+                    for (int f = 0; f < c; ++f)
                     {
                         composite[f] = s[i]; i += 1;
                     }
@@ -156,7 +157,7 @@ namespace OOP_dll_figure
         public override Figure ReturnFigure()
         {
             Composite figure = new Composite();
-            for (int i = 0; i < GetCount; ++i, history.NextElem()) 
+            for (int i = 0; i < GetCount; ++i, history.NextElem())
             {
                 figure.AddElem(history.GetElem.ReturnFigure());
             }
@@ -188,6 +189,20 @@ namespace OOP_dll_figure
             storage.NullElem();
             return InfoHistory;
         }
+        public string[] AddToHistory2(Storage<Figure> storage)
+        {
+            count = storage.GetCount;
+            InfoHistory = new string[count];
+
+            for (int i = 0; i < count; ++i, storage.NextElem())
+            {
+                Memento memento = storage.GetElem.createMemento();
+                history.AddElem(memento);
+                InfoHistory[i] = memento.InfoFigure();
+            }
+            storage.NullElem();
+            return InfoHistory;
+        }
         public void LoadHistory(string[] s)
         {
             InfoHistory = s;
@@ -209,9 +224,9 @@ namespace OOP_dll_figure
             }
             count = history.GetCount;
         }
-        public Storage<Figure> ReturnStorage()
+        public StorageDecorator<Figure> ReturnStorage() //!!!!
         {
-            Storage<Figure> storage = new Storage<Figure>();
+            StorageDecorator<Figure> storage = new StorageDecorator<Figure>();
             for (int i = 0; i < count; ++i, history.NextElem()) 
             {
                 Figure figure = history.GetElem.ReturnFigure();

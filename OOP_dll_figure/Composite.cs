@@ -11,35 +11,22 @@ namespace OOP_dll_figure
 {
     public class Composite : Figure
     {
-        private Storage<Figure> storage;
+        private StorageDecorator<Figure> storage;
         public Composite()
-        {
-            storage = new Storage<Figure>();
+        {            
+            storage = new StorageDecorator<Figure>();
             Cursor = false;
+            nameFigure = "Group";
+
+            _obs = new List<IMyObserver>();
         }
         public override bool IsComposite() { return true; }
         public Figure GetElem { get { return storage.GetElem; } }
-        
-        //public void AddElem(Storage<Figure> upStorage)
-        //{
-        //    for (int i = 0; i < upStorage.GetCount; ++i, upStorage.NextElem())
-        //    {
-        //        if (upStorage.GetElem.Cursor)
-        //        {
-        //            storage.AddElem(upStorage.GetElem);
-        //            upStorage.DeleteElem();
-        //            upStorage.BackElem();
-        //            --i;
-        //        }
-        //    }
-        //    upStorage.NullElem();
-        //}
-
         public void AddElem(Figure figure)
         {
             storage.AddElem(figure);
         }
-        public override void UnGroup(Storage<Figure> upStorage)
+        public override void UnGroup(StorageDecorator<Figure> upStorage)
         {
             upStorage.DeleteElem();
             for (int j = 0; j < storage.GetCount; ++j, storage.NextElem())
@@ -145,6 +132,7 @@ namespace OOP_dll_figure
             }
         }
 
+        // работа с памятью
         public override Memento createMemento()
         {
             MementoComposite composite = new MementoComposite();
@@ -165,5 +153,58 @@ namespace OOP_dll_figure
             storage.NullElem();
             return composite;
         }
+
+
+        // работа с наблюдателем
+        //public new List<IMyObserver> _obs;
+        //public override void AddObserver(IMyObserver o)
+        //{
+        //    _obs.Add(o);
+        //    for (int i = 0; i < storage.GetCount; ++i)
+        //    {
+        //        storage.GetElem.AddObserver(o);
+        //        storage.NextElem();
+        //    }
+        //    storage.NullElem();
+        //}
+
+        public override void RemoveObserver(IMyObserver o)
+        {
+
+            for (int i = 0; i < storage.GetCount; ++i)
+            {
+                storage.GetElem.RemoveObserver(o);
+                storage.NextElem();
+            }
+            storage.NullElem();
+            //_obsvar2.Remove(o);
+        }
+        public override void NotifyCreate()
+        {
+            for (int i = 0; i < _obs.Count; ++i)
+                _obs[i].UpdateCreate(this);
+
+            for (int i = 0; i < storage.GetCount; ++i)
+            {
+                storage.GetElem.NotifyDelete();
+                storage.GetElem.NotifyCreate();
+                storage.NextElem();
+            }
+            storage.NullElem();
+        }
+
+        public override void NotifyDelete()
+        {
+            for (int i = 0; i < _obs.Count; ++i)
+                _obs[i].UpdateDelete(this);
+
+            for (int i = 0; i < storage.GetCount; ++i)
+            {
+                storage.GetElem.NotifyDelete();
+                storage.NextElem();
+            }
+            storage.NullElem();
+        }
+
     }
 }

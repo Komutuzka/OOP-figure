@@ -8,12 +8,13 @@ using System.Windows.Forms;
 
 namespace OOP_dll_figure
 {
-    public abstract class Figure
+    public abstract class Figure : IMyObservable
     {
         protected int x, y, r = 30;
         private bool cursor;
         private Color color = Color.Red;
         protected string nameFigure;
+        public List<IMyObserver> _obs;
 
         public Figure() { }
         public Figure(int x, int y)
@@ -22,11 +23,12 @@ namespace OOP_dll_figure
             this.y = y;
             cursor = false;
             nameFigure = null;
+            _obs = new List<IMyObserver>();
         }
         public virtual int getX { get { return x; } }
         public virtual int getY { get { return y; } }
         public virtual int getR { get { return r; } }
-        public virtual string getNameFigure { get { return nameFigure; } }
+        public virtual string getNameFigure { get { { return nameFigure; } } }
 
         public virtual Color Color { get => color; set => color = value; }
         public virtual bool Cursor { get => cursor; set => cursor = value; }
@@ -53,9 +55,9 @@ namespace OOP_dll_figure
             if (r < 60) ++r;
         }
         public virtual bool IsComposite() { return false; }
-        public virtual void UnGroup(Storage<Figure> storage) { }
+        public virtual void UnGroup(StorageDecorator<Figure> storage) { }
 
-
+        // сохранение характеристик
         public virtual Memento createMemento()
         { 
             Memento memento = new Memento();
@@ -71,13 +73,29 @@ namespace OOP_dll_figure
             color = memento.RestoreColor;
         }
 
-        //public Memento SaveFigure()
-        //{
-        //    Memento mementoFigure = new Memento();
-        //    mementoFigure.SaveToMemento(nameFigure, x, y, r, color.ToArgb());
-        //    return mementoFigure;
-        //}
+        // работа с наблюдением
+        
+        public virtual void AddObserver(IMyObserver o)
+        {
+            _obs.Add(o);
+        }
 
+        public virtual void RemoveObserver(IMyObserver o)
+        {
+            _obs.Remove(o);
+        }
+
+        public virtual void NotifyCreate()
+        {
+            for (int i = 0; i < _obs.Count; ++i)
+                _obs[i].UpdateCreate(this);
+        }
+
+        public virtual void NotifyDelete()
+        {
+            for (int i = 0; i < _obs.Count; ++i)
+                _obs[i].UpdateDelete(this);
+        }
     }
     public class Circle : Figure
     {  
@@ -108,7 +126,6 @@ namespace OOP_dll_figure
     }
     public class Square : Figure
     {
-        //public Square() : base() { }
         public Square(int x, int y) : base(x, y) { nameFigure = "Square"; }
         public override void Draw(PaintEventArgs e)
         {

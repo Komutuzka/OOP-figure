@@ -87,10 +87,10 @@ namespace OOP_dll_figure
     //    }        
     //}
 
-    public class Storage<T> where T : class
+    public class Storage<T>  where T : class
     {
-        T[] array;
-        int count, index;
+        protected T[] array;
+        protected int count, index;
 
         public Storage()
         {
@@ -111,13 +111,12 @@ namespace OOP_dll_figure
         {
             get
             {
-                //if(index >= count) { return null; }
                 return array[index];
             }
         }
         public void AddElem(T figure)
         {
-            if (figure == null) return;
+            //if (figure == null) return;
             count++;
             T[] array2 = new T[count];
             for (int i = 0; i < count - 1; ++i) 
@@ -144,16 +143,6 @@ namespace OOP_dll_figure
             array = array2;
             count--;
         }
-        //public void DeleteElem()
-        //{
-        //    int j;
-        //    for (j = index; j < count - 1; ++j)
-        //    {
-        //        array[j] = array[j + 1];
-        //    }
-        //    array[j] = default(T);
-        //    count--;
-        //}
         public void DeleteAll()
         {
             for (int i = 0; i < count; ++i)
@@ -165,3 +154,4 @@ namespace OOP_dll_figure
         }
     }
 }
+
